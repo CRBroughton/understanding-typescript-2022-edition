@@ -1,27 +1,8 @@
-function add(n1: number, n2: number) {
-  return n1 + n2
-}
+let userInput: unknown // more restrictive type of any
+let userName: string
 
-function printResult(num: number): void {
-  console.log(`Result: ${num}`)
-}
+userInput = 5
+userInput = 'Craig'
 
-function addAndHandle(n1: number, n2: number, cb: (num: number) => void) { // callback function as param
-  const result = n1 + n2
-  cb(result)
-}
-
-printResult(add(5, 12))
-
-let combineValues: (a: number, b: number) => number // function as a type
-
-combineValues = add
-// combineValues = printResult
-
-// combineValues = 5
-
-console.log(combineValues(8, 8))
-
-addAndHandle(10, 20, (result) => { // callback as param
-  console.log(result)
-})
+if (typeof userInput === 'string')
+  userName = userInput
