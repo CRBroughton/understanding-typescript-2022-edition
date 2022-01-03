@@ -1,33 +1,15 @@
-// const person: {
-//     name: string;
-//     age: number;
-//     hobbies: string[]; // array of strings
-//     role: [number, string]; // tuple type
-// } = {
-//     name: 'Craig',
-//     age: 31,
-//     hobbies: ['Sports', 'Cooking'],
-//     role: [2, 'author']
-// };
-
-enum Role { ADMIN, READ_ONLY, AUTHOR }; // enums assign labels / constants to numbers / strings etc
-
-const person = {
-    name: 'Craig',
-    age: 31,
-    hobbies: ['Sports', 'Cooking'],
-    role: Role.ADMIN
+function combine(input1: number | string, input2: number | string){
+    let result;
+    if (typeof input1 === 'number' && typeof input2 === 'number') {
+        result = input1 + input2;
+    } else {
+        result = input1.toString() + input2.toString();
+    }
+    return result;
 };
 
-console.log(person.name);
+const combinedAges = combine(30, 26);
+console.log(combinedAges);
 
-for (const hobby of person.hobbies) {
-    console.log(hobby.toUpperCase());
-};
-
-if (person.role === Role.ADMIN) {
-    console.log('Admin')
-}
-
-// person.role.push('admin') - Push is an exception; Will be allowed by TS even though it is a tuple
-// person.role[1] = 10 - Tuple type cannot be overriden.
+const combinedName = combine('Max', 'Anna');
+console.log(combinedName);
