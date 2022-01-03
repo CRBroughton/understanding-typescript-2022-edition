@@ -1,0 +1,14 @@
+{
+  "name": "understanding-typescript-2022-edition",
+  "version": "1.0.0",
+  "description": "In this repository you can find the completed section under the relevant branch name, as well as the completed code in the master branch.",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
