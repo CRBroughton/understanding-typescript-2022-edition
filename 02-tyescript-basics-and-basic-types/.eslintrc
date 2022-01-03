@@ -3,6 +3,9 @@
     "@antfu"
   ],
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+      // note you must disable the base rule as it can report incorrect errors
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["off"]
   }
 }
