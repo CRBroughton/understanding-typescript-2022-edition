@@ -33,3 +33,17 @@ if (button) {
   button.addEventListener('click', event => console.log(event))
 }
 printOutput(add(5))
+
+// Spread Operator
+
+const hobbies = ['Sports', 'Cooking']
+const activeHobbies = ['Hiking']
+
+activeHobbies.push(...hobbies)
+
+const person = {
+  name: 'Craig',
+  age: 31
+}
+
+const copiedPerson = { ...person }
