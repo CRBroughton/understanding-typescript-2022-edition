@@ -36,15 +36,15 @@
 
 // // Spread Operator
 
-// const hobbies = ['Sports', 'Cooking']
+const hobbies = ['Sports', 'Cooking']
 // const activeHobbies = ['Hiking']
 
 // activeHobbies.push(...hobbies)
 
-// const person = {
-//   name: 'Craig',
-//   age: 31
-// }
+const person = {
+  firstName: 'Craig',
+  age: 31
+}
 
 // const copiedPerson = { ...person }
 
@@ -53,14 +53,24 @@
 const add = (...numbers: number[]) => { // Accepts an unlimited amount of numbers by the spread operator, turning the params into an array
   return numbers.reduce((curResult, curValue) => {
     return curResult + curValue
-  }, 0);
+  }, 0)
 }
 
 const addTuple = (...numbers: [number, number, number]) => { // Accepts a limited amount of numbers by the spread operator, turning the params into an array
   return numbers.reduce((curResult, curValue) => {
     return curResult + curValue
-  }, 0);
+  }, 0)
 }
 
 const addNumbers = add(5, 10, 2, 3.7)
 console.log(addNumbers)
+
+// Array and object destructuring
+
+// pull out elements into consts from arrays or objects
+
+const [hobby1, hobby2, ...remainingHobbies] = hobbies
+
+const { firstName: userName, age } = person // overrides firstName to const userName, not type assignment!
+
+console.log(userName, age)
