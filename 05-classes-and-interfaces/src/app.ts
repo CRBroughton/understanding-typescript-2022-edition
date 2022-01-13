@@ -1,4 +1,4 @@
-class Department {
+abstract class Department {
     static fiscalYear = 2020
     // private name: string
     protected employees: string[] = [] // protected is available to this class and extended classes
@@ -11,9 +11,11 @@ class Department {
         return { name: name }             // Static members can't be accessed inside the class. You'd haveo to use class_Name.static_Method
     }
 
-    describe(this: Department) { // Refer to instance based on Department class
-        console.log(`Department (${this.id}): ${this.name}`)
-    }
+    // describe(this: Department) { // Refer to instance based on Department class
+    //     console.log(`Department (${this.id}): ${this.name}`)
+    // }
+
+    abstract describe(this: Department): void // Abstract method - forces extended classes to override
     
     addEmployee(employee: string) {
         this.employees.push(employee)
@@ -30,6 +32,10 @@ class ITDepartment extends Department {
     constructor(id: string, admins: string[]) {
         super(id, 'IT')
         this.admins = admins
+    }
+
+    describe() {
+        console.log('IT Department - ID: ' + this.id)
     }
 }
 
