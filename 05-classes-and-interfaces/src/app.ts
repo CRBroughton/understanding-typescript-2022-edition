@@ -5,7 +5,7 @@ class Department {
         this.name = n
     }
 
-    describe() {
+    describe(this: Department) { // Refer to instance based on Department class
         console.log('Department: ' + this.name)
     }
 }
@@ -13,3 +13,7 @@ class Department {
 const accounting = new Department('Accounting')
 
 accounting.describe()
+
+const accountingCopy = { describe: accounting.describe }
+
+accountingCopy.describe()
