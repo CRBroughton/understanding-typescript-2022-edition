@@ -1,4 +1,4 @@
-abstract class Department {
+abstract class Department { // abstract classes can't be instantiated, only inherited
     static fiscalYear = 2020
     // private name: string
     protected employees: string[] = [] // protected is available to this class and extended classes
