@@ -1,6 +1,6 @@
 class Department {
     // private name: string
-    private employees: string[] = []
+    protected employees: string[] = [] // protected is available to this class and extended classes
 
     constructor(private readonly id: string, public name: string) { 
         // this.name = n
@@ -33,6 +33,13 @@ class AccountingDepartment extends Department {
         super(id, 'Accounting')
     } 
 
+    addEmployee(name: string) {
+        if (name === 'Max') {
+            return
+        }
+        this.employees.push(name)
+    }
+
     addReport(text: string) {
         this.reports.push(text)
     }
@@ -56,7 +63,11 @@ const accounting = new AccountingDepartment('a1', [])
 
 accounting.addReport('Something went wrong...')
 
+accounting.addEmployee('Craig')
+
 accounting.printReports()
+
+accounting.printEmployeeInformation()
 
 // const accountingCopy = { describe: accounting.describe }
 
