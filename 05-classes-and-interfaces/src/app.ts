@@ -3,7 +3,7 @@ class Department {
     // private name: string
     protected employees: string[] = [] // protected is available to this class and extended classes
 
-    constructor(private readonly id: string, public name: string) { 
+    constructor(protected readonly id: string, public name: string) { 
         // this.name = n
     }
 
@@ -55,6 +55,10 @@ class AccountingDepartment extends Department {
         this.lastReport = reports[0]
     } 
 
+    describe() {
+        console.log('Accounting Department - ID: ' + this.id)
+    }
+
     addEmployee(name: string) {
         if (name === 'Max') {
             return
@@ -94,9 +98,11 @@ accounting.addReport('Something went wrong...')
 
 accounting.addEmployee('Craig')
 
-accounting.printReports()
+// accounting.printReports()
 
-accounting.printEmployeeInformation()
+// accounting.printEmployeeInformation()
+
+accounting.describe()
 
 // const accountingCopy = { describe: accounting.describe }
 
