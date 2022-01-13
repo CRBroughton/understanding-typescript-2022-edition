@@ -1,9 +1,14 @@
 class Department {
+    static fiscalYear = 2020
     // private name: string
     protected employees: string[] = [] // protected is available to this class and extended classes
 
     constructor(private readonly id: string, public name: string) { 
         // this.name = n
+    }
+
+    static createEmployee(name: string) { // Static methods can be called directly 
+        return { name: name }             // Static members can't be accessed inside the class. You'd haveo to use class_Name.static_Method
     }
 
     describe(this: Department) { // Refer to instance based on Department class
@@ -66,6 +71,9 @@ class AccountingDepartment extends Department {
         console.log(this.reports)
     }
 }
+
+const employee1 = Department.createEmployee('Max')
+console.log(employee1, Department.fiscalYear)
 
 const it = new ITDepartment('d1', ['Craig'])
 
