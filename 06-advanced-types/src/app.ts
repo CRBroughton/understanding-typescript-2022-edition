@@ -144,3 +144,11 @@ const fetchedUserData = {
 }
 
 console.log(fetchedUserData?.job?.title) // ? allows us to safely access nested properties and objects in our data.
+
+// Nullish Coalescing
+
+const userInput = null
+
+const storedData = userInput ?? 'DEFAULT' // ?? is the Nullish Coalescing Operator; if this is null or undefined, then use fallback, else use value.
+
+console.log(storedData)
