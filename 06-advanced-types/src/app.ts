@@ -119,3 +119,18 @@ const errorBag: ErrorContainer = {
     email: 'Not a valid email!',
     username: 'Must start with a capital character!'
 }
+
+// Function overloads
+
+function addNum(a: string, b: string): string // this is also an overload
+function addNum(a: number, b: number): number // this is the overload, gives the func the option of using either set of params, can also add more overloads to the top
+function addNum(a: Combinable, b: Combinable){
+    if (typeof a === 'string' || typeof b === 'string') { // Type guard
+        return a.toString() + b.toString()
+    }
+    return a + b
+}
+
+
+const results = addNum('asd', 'asd')
+results.split('')
