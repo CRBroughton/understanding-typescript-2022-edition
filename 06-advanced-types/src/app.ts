@@ -134,3 +134,13 @@ function addNum(a: Combinable, b: Combinable){
 
 const results = addNum('asd', 'asd')
 results.split('')
+
+// Optional Chaining
+
+const fetchedUserData = {
+    id: 'u1',
+    name: 'Craig',
+    job: { title: 'Software Engineer', description: 'code boi'}
+}
+
+console.log(fetchedUserData?.job?.title) // ? allows us to safely access nested properties and objects in our data.
