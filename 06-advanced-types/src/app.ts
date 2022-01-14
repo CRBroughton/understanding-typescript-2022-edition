@@ -70,3 +70,30 @@ function useVehicle(vehicle: Vehicle) {
         vehicle.loadCargo(1000)
     }
 }
+
+
+// Discriminated Unions
+
+interface Bird {
+    type: 'bird' // literal type assignment
+    flyingSpeed: number
+}
+
+interface Horse {
+    type: 'horse' // literal type assignment
+    runningSpeed: number
+}
+
+type Animal = Bird | Horse
+
+function moveAnimal(animal: Animal) {
+    let speed: number;
+    switch (animal.type) {
+        case 'bird':
+            speed = animal.flyingSpeed
+            break
+        case 'horse':
+            speed = animal.runningSpeed
+    }
+    console.log(`Moving at speed: ${speed}`)
+}
