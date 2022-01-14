@@ -107,3 +107,15 @@ const paragraph = document.querySelector('p') //  as HTMLInputElement
 if (paragraph) {
     (paragraph as HTMLInputElement).value = 'Hi there!' // another alternative
 }
+
+
+// Index properties
+
+interface ErrorContainer {
+    [prop: string]: string // every property needs to be of type string
+}
+
+const errorBag: ErrorContainer = {
+    email: 'Not a valid email!',
+    username: 'Must start with a capital character!'
+}
