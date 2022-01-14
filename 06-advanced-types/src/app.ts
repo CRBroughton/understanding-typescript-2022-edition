@@ -97,3 +97,13 @@ function moveAnimal(animal: Animal) {
     }
     console.log(`Moving at speed: ${speed}`)
 }
+
+// Type Casting
+
+// const paragraph = <HTMLInputElement>document.querySelector('p') // Alternative
+
+const paragraph = document.querySelector('p') //  as HTMLInputElement
+
+if (paragraph) {
+    (paragraph as HTMLInputElement).value = 'Hi there!' // another alternative
+}
