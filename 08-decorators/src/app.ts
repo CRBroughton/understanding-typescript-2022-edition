@@ -44,9 +44,11 @@
 // console.log(pers)
 
 // --- Another example of a factory
+// Here you can see that decorators execute from bottom to top.
 
 function WithTemplate(template: string, hookId: string) {
     return function(constructor: any) {
+        console.log('Rendering template...')
         const hookEl = document.getElementById(hookId);
 
         const p = new constructor()
@@ -56,6 +58,13 @@ function WithTemplate(template: string, hookId: string) {
     }
 }
 
+function Logger(logString: string) {
+    return function(constructor: Function) {
+    console.log(logString)
+    console.log(constructor)
+    }
+}
+@Logger('LOGGING')
 @WithTemplate('<h1>My Person Object</h1>', 'app')
 class Person {
     name = "Craig"
