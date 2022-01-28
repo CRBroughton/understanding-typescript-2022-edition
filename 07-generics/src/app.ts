@@ -18,9 +18,25 @@
 
 // With generics, we can tell Typescript the two params can and will be different types.
 // and that we expect the returned object to be the intersection of those two supplied objects.
-function merge<T, U>(objA: T, objB: U){
+// function merge<T, U>(objA: T, objB: U){
+//     return Object.assign(objA, objB)
+// }
+
+// const mergedObj = merge({name: 'Craig'}, {age: 31})
+// console.log(mergedObj.age)
+
+
+// ---
+
+
+// Here we are saying 'The T and U types have to be objects', which restricts
+// which types can be passed to these parameters.
+function merge<T extends object, U extends object>(objA: T, objB: U){
     return Object.assign(objA, objB)
 }
 
-const mergedObj = merge({name: 'Craig'}, {age: 31})
-console.log(mergedObj.age)
+// With this, the below console.log will not work as intended, as the 
+// second param is not of type object
+
+// const mergedObj = merge({name: 'Craig'}, 30)
+// console.log(mergedObj.age)
