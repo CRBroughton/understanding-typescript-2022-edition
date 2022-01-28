@@ -36,6 +36,7 @@ class ProjectInput {
         this.attach()
     }
 
+    @Autobind
     private submitHandler(event: Event) {
         event.preventDefault()
         console.log(this.titleInputElement.value)
