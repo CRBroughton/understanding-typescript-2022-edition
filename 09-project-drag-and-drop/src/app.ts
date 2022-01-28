@@ -30,7 +30,7 @@ class ProjectInput {
 
         this.titleInputElement = this.element.querySelector('#title') as HTMLInputElement
         this.descriptionInputElement = this.element.querySelector('#description') as HTMLInputElement
-        this.peopleInputElement = this.element.querySelector('#peopl') as HTMLInputElement
+        this.peopleInputElement = this.element.querySelector('#people') as HTMLInputElement
 
         this.configure()
         this.attach()
