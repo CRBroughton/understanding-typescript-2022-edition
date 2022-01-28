@@ -52,6 +52,12 @@ class ProjectInput {
         }
     }
 
+    private clearInputs() {
+        this.titleInputElement.value = ''
+        this.descriptionInputElement.value = ''
+        this.peopleInputElement.value = ''
+    }
+
     @Autobind
     private submitHandler(event: Event) {
         event.preventDefault()
@@ -59,6 +65,7 @@ class ProjectInput {
         if (Array.isArray(userInput)) { // checks if is array
             const [title, description, people] = userInput
             console.log(title, description, people)
+            this.clearInputs()
         }
     }
 
