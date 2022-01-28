@@ -30,7 +30,7 @@ class ProjectInput {
     }
 
     private configure() {
-        this.element.addEventListener('submit', this.submitHandler)
+        this.element.addEventListener('submit', this.submitHandler.bind(this))
     }
 
     private attach() {
