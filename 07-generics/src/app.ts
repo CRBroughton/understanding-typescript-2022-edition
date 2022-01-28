@@ -58,3 +58,15 @@ function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
 }
 
 console.log(countAndDescribe('Hi there!'))
+
+
+// ---
+
+// The keyof ensure that our second param is a key of the first param.
+// Passing an object without this key will result in an error.
+
+function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) {
+    return `Value: ${obj[key]}`
+}
+
+extractAndConvert({name: 'Craig'}, 'name')
