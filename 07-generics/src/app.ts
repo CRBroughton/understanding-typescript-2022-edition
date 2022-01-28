@@ -40,3 +40,21 @@ function merge<T extends object, U extends object>(objA: T, objB: U){
 
 // const mergedObj = merge({name: 'Craig'}, 30)
 // console.log(mergedObj.age)
+
+
+
+// ---
+// Another example of generic types that is extending a interface
+
+interface Lengthy {
+    length: number
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let descriptionText = 'Got no value'
+    if (element.length > 0)
+        descriptionText = `Got ${element.length} elements`
+    return [element, descriptionText]
+}
+
+console.log(countAndDescribe('Hi there!'))
