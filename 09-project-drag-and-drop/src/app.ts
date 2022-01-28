@@ -36,10 +36,18 @@ class ProjectInput {
         this.attach()
     }
 
+    private gatherUserInput(): [string, string, number] {
+        const enteredTitle = this.titleInputElement.value
+        const enteredDescription = this.descriptionInputElement.value
+        const enteredPeople = this.peopleInputElement.value
+
+        
+    }
+
     @Autobind
     private submitHandler(event: Event) {
         event.preventDefault()
-        console.log(this.titleInputElement.value)
+        const userInput = this.gatherUserInput()
     }
 
     private configure() {
