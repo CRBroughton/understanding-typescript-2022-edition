@@ -103,3 +103,30 @@ console.log(textStorage.getItems())
 
 // Below will not work as the DataStorage only allows certain types
 // const objStorage = new DataStorage<object>()
+
+
+// --- Partials - Tells Typescrip that this object (in this case)
+// will eventually be of type CourseGoal (all properties are now optional)
+
+interface CourseGoal {
+    title: string
+    description: string
+    date: Date
+}
+
+function createCourseGoal(
+    title: string,
+    description: string,
+    date: Date
+): CourseGoal {
+    let courseGoal: Partial<CourseGoal> = {}
+    courseGoal.title = title
+    courseGoal.description = description
+    courseGoal.date = date
+    return courseGoal as CourseGoal // casting as we now know this is matching our type
+}
+
+// --- Read Only type - does what it says
+
+const names: Readonly<string[]> = ['Craig', 'Anna']
+// names.push('Max') // this will not work as names is now read only
