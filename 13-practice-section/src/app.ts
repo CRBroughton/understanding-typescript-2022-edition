@@ -3,6 +3,22 @@ import axios from 'axios'
 const form = document.querySelector('form')!;
 const addressInput = document.getElementById('address')! as HTMLInputElement;
 
+const GOOGLE_API_KEY = '';
+
+type GoogleGeocodingResponseStatus = 'OK' | 'ZERO_RESULTS';
+
+type GoogleGeocodingResponse = {
+    results: {
+        geometry: {
+            location: {
+                lat: number;
+                lng: number;
+            }
+        }
+    }[]
+    status: GoogleGeocodingResponseStatus;
+}
+
 function searchAddressHandler(event: Event) {
     event.preventDefault();
 
@@ -10,7 +26,29 @@ function searchAddressHandler(event: Event) {
 
     // send to Google API
 
-    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY`)
+    axios.get<GoogleGeocodingResponse>(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(enteredAddress)}&key=${GOOGLE_API_KEY}`)
+        .then(response => {
+
+            if (response.data.status !== 'OK') {
+                throw new Error('Could not fetch location!');
+            }
+
+            const coordinates = response.data.results[0].geometry.location;
+            const mapDiv = document.getElementById('map') as HTMLDivElement;
+            const map = new google.maps.Map(mapDiv, {
+                center: coordinates,
+                zoom: 12
+            });
+
+            new google.maps.Marker({
+                position: coordinates,
+                map: map,
+            });
+        })
+        .catch(error => {
+        alert(error.message);
+        console.log(error);
+    })
 };
 
-form.addeventListener('submit', searchAddressHandler);
+form.addEventListener('submit', searchAddressHandler);
