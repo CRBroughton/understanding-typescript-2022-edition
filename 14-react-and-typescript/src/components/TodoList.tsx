@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './TodoList.css'
+
 interface Props {
   items: {
     id: string
