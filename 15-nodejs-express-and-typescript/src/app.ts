@@ -1,5 +1,6 @@
 import express from 'express'
 import type { NextFunction, Request, Response } from 'express'
+import { json } from 'body-parser'
 import todoRoutes from './routes/todos'
 
 interface ExpressError {
@@ -10,6 +11,9 @@ interface ExpressError {
 }
 
 const app = express()
+
+app.use(json())
+
 app.use('/todos', todoRoutes)
 
 app.use(({ ...args }: ExpressError) => {
